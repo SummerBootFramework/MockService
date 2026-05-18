@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.jexpress.mockservice.app.Main" />
+    <module name="MockService" />
+    <option name="VM_PARAMETERS" value="-Djava.awt.headless=true  -Xms2G -Xmx2G  -XX:+UseZGC -XX:ZUncommitDelay=300 -XX:+ZGenerational -XX:+AlwaysPreTouch  -XX:+PerfDisableSharedMem  -XX:+ZUncommit  -XX:+DisableExplicitGC  -XX:MaxDirectMemorySize=1g  -XX:+HeapDumpOnOutOfMemoryError  -XX:HeapDumpPath=heapdump.hprof  -XX:+ExitOnOutOfMemoryError  -Xlog:gc*:file=gc.log:time,level,tags:filecount=5,filesize=10M  -Dfile.encoding=UTF-8  -Duser.timezone=America/Toronto  -Dio.netty.handler.ssl.openssl.engine.enable=true  -Dio.netty.leakDetectionLevel=SIMPLE  -Dio.netty.native.workdir=lib  -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector" />
+    <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,0 +1,49 @@
+[Unit]
+Description=Mock Service (powered by jEXpress)
+After=syslog.target network.target
+
+[Service]
+WorkingDirectory=/apps/MockService
+Environment=APP_DIR=/apps/MockService
+Environment=APP_JAR=MockService-1.1.0.jar
+Environment=APP_ARGS="-debug"
+
+
+Environment="OPTIONS=\
+ -Djava.awt.headless=true \
+ -Xms2G -Xmx2G \
+ -XX:+UseZGC -XX:ZUncommitDelay=300 -XX:+ZGenerational -XX:+AlwaysPreTouch \
+ -XX:+PerfDisableSharedMem \
+ -XX:+ZUncommit \
+ -XX:+DisableExplicitGC \
+ -XX:MaxDirectMemorySize=1g \
+ -XX:+HeapDumpOnOutOfMemoryError \
+ -XX:HeapDumpPath=heapdump.hprof \
+ -XX:+ExitOnOutOfMemoryError \
+ -Xlog:gc*:file=gc.log:time,level,tags:filecount=5,filesize=10M \
+ -Dfile.encoding=UTF-8 \
+ -Duser.timezone=America/Toronto \
+ -Dio.netty.handler.ssl.openssl.engine.enable=true \
+ -Dio.netty.leakDetectionLevel=SIMPLE \
+ -Dio.netty.native.workdir=lib \
+ -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector"
+
+
+# Init temp file on start
+ExecStartPre=
+
+# Run the application with Java 21/25
+ExecStart=/bin/sh -c  "JAVA_PATH=$(find /usr/lib/jvm -name "java-21*" -type d | head -1)/bin/java; $JAVA_PATH \
+ $OPTIONS -jar $APP_DIR/$APP_JAR $APP_ARGS"
+
+# Clean up temp file on stop
+ExecStopPost=
+
+Type=simple
+SuccessExitStatus=143
+User=myUserName
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

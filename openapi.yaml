@@ -1,0 +1,451 @@
+openapi: 3.0.1
+info:
+  title: Default Admin API
+  description: "To change to yours, just add @OpenAPIDefinition.info"
+  contact:
+    name: summerboot.org
+  version: jExpress 2.6.10
+servers:
+- url: https://localhost:8211
+  description: Local Development server
+paths:
+  /mockservice/checkhealth:
+    get:
+      tags:
+      - App Admin
+      summary: Run application self inspection
+      description: get running application health information
+      operationId: checkHealth
+      responses:
+        "200":
+          description: inspection success with current version
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            text/html:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            text/html:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+      security:
+      - BearerAuth: []
+  /mockservice/jwt/{ttlMinutes}:
+    post:
+      tags:
+      - Mock Service
+      summary: Generate mock JWT
+      description: Generate mock JWT with user inputs
+      operationId: generateJWT
+      parameters:
+      - name: ttlMinutes
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              type: object
+              properties:
+                userId:
+                  pattern: "[a-zA-Z\\.\\-' ]{1,10}"
+                  type: string
+                role:
+                  pattern: "[a-zA-Z\\.\\-' ]{1,10}"
+                  type: string
+                group:
+                  pattern: "[a-zA-Z\\.\\-' ]{1,10}"
+                  type: string
+      responses:
+        "201":
+          description: success and return JWT token in header X-AuthToken
+          headers:
+            X-AuthToken:
+              description: Generated JWT
+              style: simple
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Caller"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Caller"
+        "4XX":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5XX":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+  /mockservice/gracefulshutdown:
+    put:
+      tags:
+      - App Admin
+      summary: Put server into graceful shutdown mode
+      description: pause service
+      operationId: gracefulShutdownOn
+      responses:
+        "204":
+          description: success
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+      security:
+      - BearerAuth: []
+    delete:
+      tags:
+      - App Admin
+      summary: Resume the server from graceful shutdown mode
+      description: resume service
+      operationId: gracefulShutdownOff
+      responses:
+        "204":
+          description: success
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+      security:
+      - BearerAuth: []
+  /mockservice/login:
+    post:
+      tags:
+      - App Authentication
+      summary: User login
+      description: Accept JSON based parameters for login
+      operationId: longin_JSON
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginVo"
+      responses:
+        "201":
+          description: success and return JWT token in header X-AuthToken
+          headers:
+            X-AuthToken:
+              description: Generated JWT
+              style: simple
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Caller"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Caller"
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+    delete:
+      tags:
+      - App Authentication
+      summary: User logout
+      description: User logout
+      operationId: logout
+      responses:
+        "204":
+          description: success
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+      security:
+      - BearerAuth: []
+  /mockservice/j_security_check:
+    post:
+      tags:
+      - App Authentication
+      summary: User login
+      description: Accept Form based parameters for login
+      operationId: longin_jSecurityCheck
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+              - j_username
+              type: object
+              properties:
+                j_username:
+                  type: string
+                j_password:
+                  type: string
+      responses:
+        "201":
+          description: success and return JWT token in header X-AuthToken
+          headers:
+            X-AuthToken:
+              description: Generated JWT
+              style: simple
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Caller"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Caller"
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+  /mockservice/ping:
+    get:
+      tags:
+      - Load Balancing
+      summary: ping service status
+      description: "Load Balancer (F5, Nginx, etc) will do the health check via this\
+        \ ping service, if Http Status is not 200(OK), the load Balancer will stop\
+        \ sending new request to this service.<br>Below is an example of F5 config:\
+        \ Basically it's one monitor that does the check to each member in the pool\
+        \ . It will mark each server within the pool member down if it does not receive\
+        \ a 200. <br><i>GET /myservices/myapp/ping HTTP/1.1\\r\\nConnection: Close\\\
+        r\\n\\r\\n</i>"
+      operationId: ping
+      responses:
+        "200":
+          description: The service status is healthy
+        "5XX":
+          description: The service status is unhealthy if response code is not 200
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+  /mockservice/version:
+    get:
+      tags:
+      - App Admin
+      summary: Check application version
+      description: get running application version information
+      operationId: version
+      responses:
+        "200":
+          description: running application version
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            text/html:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            text/html:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+      security:
+      - BearerAuth: []
+components:
+  schemas:
+    Err:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        errorTag:
+          type: string
+        errorDesc:
+          type: string
+      description: The optional error list
+    ServiceError:
+      required:
+      - ref
+      type: object
+      properties:
+        ref:
+          type: string
+          description: The index of requests received by current server since start
+        errors:
+          type: array
+          description: The optional error list
+          items:
+            $ref: "#/components/schemas/Err"
+    Caller:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        id:
+          type: number
+        type:
+          type: integer
+          format: int32
+        displayName:
+          type: string
+        groups:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+        jti:
+          type: string
+        uid:
+          type: string
+        tokenTtlSec:
+          type: integer
+          format: int64
+        tenantId:
+          type: number
+        tenantName:
+          type: string
+    LoginVo:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+    ApiKeyAuth:
+      type: apiKey
+      name: X-API-KEY
+      in: header
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: "Authorization: Bearer <JWT token>"
