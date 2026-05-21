@@ -318,6 +318,57 @@ paths:
             application/xml:
               schema:
                 $ref: "#/components/schemas/ServiceError"
+  /mockservice/ott:
+    get:
+      tags:
+      - App Authentication
+      summary: WebSocket One Time Ticket Authentication
+      description: Requires Bearer auth header
+      operationId: oneTimeTicketAuthenticate
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        "200":
+          description: success and return OTT
+          headers:
+            X-AuthToken:
+              description: Generated JWT
+              style: simple
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Caller"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Caller"
+        "4xx":
+          description: This class of status code is intended for situations in which
+            the error seems to have been caused by the client. Client normally should
+            not retransmit the same request again.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+        "5xx":
+          description: This class of status code is intended for situations in which
+            the server is aware that it has encountered an error or is otherwise incapable
+            of performing the request. The client can continue and try again with
+            the request without modification.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
   /mockservice/ping:
     get:
       tags:
@@ -409,20 +460,20 @@ components:
           format: int32
         displayName:
           type: string
+        jti:
+          type: string
+        uid:
+          type: string
         groups:
           uniqueItems: true
           type: array
           items:
             type: string
-        jti:
-          type: string
-        uid:
-          type: string
+        tenantId:
+          type: number
         tokenTtlSec:
           type: integer
           format: int64
-        tenantId:
-          type: number
         tenantName:
           type: string
     LoginVo:

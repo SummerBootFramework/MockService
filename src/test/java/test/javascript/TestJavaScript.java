@@ -1,29 +1,41 @@
+/*
+ * Copyright 2005-2026 Du Law Office - jExpress, The Summer Boot Framework Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://apache.org
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
 package test.javascript;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.oracle.truffle.js.scriptengine.GraalJSScriptEngine;
-import io.netty.handler.codec.http.HttpHeaders;
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import org.graalvm.polyglot.Context;
-import org.jexpress.mockservice.app.Utils;
-import org.summerboot.jexpress.util.BeanUtil;
-import org.summerboot.jexpress.util.FormatterUtil;
-import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  *
@@ -56,35 +68,35 @@ public class TestJavaScript {
     }
 
     public static final String requestBody = """
-                      {"result":true, "count":42}
-                      """;
+            {"result":true, "count":42}
+            """;
     public static final String jsCode = """                        
-                        function function1(arg1, arg2) { 
-                            print('arg1='+arg1+', arg2='+arg2);
-                            return "from JS1: " + 'arg1='+arg1+', arg2='+arg2; 
-                        }
-                        
-                        var MyApp = {
-                          myVar1: 0,
-                          myVar2: 'abc',
-                        
-                         function2: function(arg1, arg2) { 
-                            print('arg1='+arg1+', arg2='+arg2);
-                            MyApp.myVar1++;
-                            return "from JS2: " + 'arg1='+arg1+', arg2='+arg2 + ", " + MyApp.myVar1 + "=" + MyApp.myVar2; 
-                         },
-                        
-                         function3: function(requestBodyString, header) {
-                            var json = JSON.parse(requestBodyString);
-                            print('result=' + json.result + ', count=' + json.count);
-                            
-                            print('header=' + header.keys().length);
-                            
-                            MyApp.myVar1++;                 
-                            return "from JS3: " + "result="+json.result+", count="+json.count + ", " + MyApp.myVar1 + "=" + MyApp.myVar2 + ", header.key1="+header["Content-Type"] + ", header.ke2="+header["Content-Length"]; 
-                         }
-                        }
-                        """;
+            function function1(arg1, arg2) { 
+                print('arg1='+arg1+', arg2='+arg2);
+                return "from JS1: " + 'arg1='+arg1+', arg2='+arg2; 
+            }
+            
+            var MyApp = {
+              myVar1: 0,
+              myVar2: 'abc',
+            
+             function2: function(arg1, arg2) { 
+                print('arg1='+arg1+', arg2='+arg2);
+                MyApp.myVar1++;
+                return "from JS2: " + 'arg1='+arg1+', arg2='+arg2 + ", " + MyApp.myVar1 + "=" + MyApp.myVar2; 
+             },
+            
+             function3: function(requestBodyString, header) {
+                var json = JSON.parse(requestBodyString);
+                print('result=' + json.result + ', count=' + json.count);
+            
+                print('header=' + header.keys().length);
+            
+                MyApp.myVar1++;                 
+                return "from JS3: " + "result="+json.result+", count="+json.count + ", " + MyApp.myVar1 + "=" + MyApp.myVar2 + ", header.key1="+header["Content-Type"] + ", header.ke2="+header["Content-Length"]; 
+             }
+            }
+            """;
 
     @Test
     public void testJavaScript() throws ScriptException, NoSuchMethodException, JsonProcessingException {
