@@ -17,17 +17,17 @@
 
 package org.jexpress.mockservice.app;
 
+import org.summerboot.jexpress.annotation.config.Config;
+import org.summerboot.jexpress.annotation.config.ConfigFilename;
+import org.summerboot.jexpress.annotation.config.ConfigHeader;
 import org.summerboot.jexpress.boot.config.BootConfig;
 import org.summerboot.jexpress.boot.config.ConfigUtil;
-import org.summerboot.jexpress.boot.config.annotation.Config;
-import org.summerboot.jexpress.boot.config.annotation.ConfigHeader;
-import org.summerboot.jexpress.boot.config.annotation.ImportResource;
 
 import java.io.File;
 import java.util.Properties;
 import java.util.Set;
 
-@ImportResource("cfg_whitelist.properties")
+@ConfigFilename("cfg_whitelist.properties")
 public class WhitelistConfig extends BootConfig {
 
     public static void main(String[] args) {

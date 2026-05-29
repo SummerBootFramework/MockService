@@ -5,7 +5,7 @@
     <packaging>jar</packaging>
     <groupId>org.jexpress.mockservice</groupId>
     <artifactId>MockService</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <name>Hello Summer - MockService ${project.version}</name>
     <url>https://github.com/SummerBootFramework/jExpressDemo-HelloSummer</url>
 
@@ -21,7 +21,7 @@
         <maven-surefire.version>3.5.5</maven-surefire.version>
         <maven-failsafe.version>3.5.5</maven-failsafe.version>
         <swagger-maven.version>2.2.48</swagger-maven.version>
-        <jexpress.version>2.6.10-SNAPSHOT</jexpress.version>
+        <jexpress.version>2.6.10</jexpress.version>
         <testng.version>7.12.0</testng.version>
 
         <!-- application properties and dependencies-->

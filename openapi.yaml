@@ -326,6 +326,10 @@ paths:
       description: Requires Bearer auth header
       operationId: oneTimeTicketAuthenticate
       parameters:
+      - name: wsURI
+        in: query
+        schema:
+          type: string
       - name: Authorization
         in: header
         schema:
@@ -460,6 +464,13 @@ components:
           format: int32
         displayName:
           type: string
+        tenantName:
+          type: string
+        tokenTtlSec:
+          type: integer
+          format: int64
+        tenantId:
+          type: number
         jti:
           type: string
         uid:
@@ -469,13 +480,6 @@ components:
           type: array
           items:
             type: string
-        tenantId:
-          type: number
-        tokenTtlSec:
-          type: integer
-          format: int64
-        tenantName:
-          type: string
     LoginVo:
       required:
       - password

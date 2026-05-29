@@ -23,13 +23,13 @@ import io.jsonwebtoken.Jwts;
 import org.apache.commons.lang3.StringUtils;
 import org.graalvm.polyglot.Context;
 import org.summerboot.jexpress.boot.BootConstant;
-import org.summerboot.jexpress.nio.server.NioHttpUtil;
-import org.summerboot.jexpress.nio.server.SessionContext;
+import org.summerboot.jexpress.controller.SessionContext;
+import org.summerboot.jexpress.controller.authenticate.AuthConfig;
+import org.summerboot.jexpress.controller.authenticate.Caller;
+import org.summerboot.jexpress.controller.authenticate.RoleMapping;
 import org.summerboot.jexpress.security.JwtUtil;
 import org.summerboot.jexpress.security.SecurityUtil;
-import org.summerboot.jexpress.security.auth.AuthConfig;
-import org.summerboot.jexpress.security.auth.Caller;
-import org.summerboot.jexpress.security.auth.RoleMapping;
+import org.summerboot.jexpress.webserver.netty.NioHttpUtil;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;

@@ -31,4 +31,4 @@ echo "Starting with Java: ${JAVA_PATH}"
  -Dio.netty.handler.ssl.openssl.engine.enable=true \
  -Dio.netty.leakDetectionLevel=SIMPLE \
  -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector \
- -jar MockService-1.1.0.jar
+ -jar MockService-1.2.0.jar
