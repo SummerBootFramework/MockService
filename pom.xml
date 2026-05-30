@@ -21,7 +21,7 @@
         <maven-surefire.version>3.5.5</maven-surefire.version>
         <maven-failsafe.version>3.5.5</maven-failsafe.version>
         <swagger-maven.version>2.2.48</swagger-maven.version>
-        <jexpress.version>2.6.10</jexpress.version>
+        <jexpress.version>2.6.11-SNAPSHOT</jexpress.version>
         <testng.version>7.12.0</testng.version>
 
         <!-- application properties and dependencies-->
@@ -140,6 +140,7 @@
                                 <include>**/log</include>
                                 <include>**/temp/**</include>
                                 <include>**/temp</include>
+                                <include>gc.log*</include>
                             </includes>
                             <excludes>
                                 <exclude>plugin/*.jar</exclude>
@@ -159,6 +160,7 @@
                             <includes>
                                 <include>etc/*</include>
                                 <include>etc</include>
+                                <include>gc.log*</include>
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>

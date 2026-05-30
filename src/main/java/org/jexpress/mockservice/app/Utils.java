@@ -22,14 +22,15 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import org.apache.commons.lang3.StringUtils;
 import org.graalvm.polyglot.Context;
+import org.summerboot.jexpress.api.common.SessionContext;
 import org.summerboot.jexpress.boot.BootConstant;
-import org.summerboot.jexpress.controller.SessionContext;
-import org.summerboot.jexpress.controller.authenticate.AuthConfig;
-import org.summerboot.jexpress.controller.authenticate.Caller;
-import org.summerboot.jexpress.controller.authenticate.RoleMapping;
-import org.summerboot.jexpress.security.JwtUtil;
+import org.summerboot.jexpress.common.util.FormatterUtil;
+import org.summerboot.jexpress.infra.netty.NioHttpUtil;
 import org.summerboot.jexpress.security.SecurityUtil;
-import org.summerboot.jexpress.webserver.netty.NioHttpUtil;
+import org.summerboot.jexpress.security.auth.AuthConfig;
+import org.summerboot.jexpress.security.auth.Caller;
+import org.summerboot.jexpress.security.auth.RoleMapping;
+import org.summerboot.jexpress.security.token.jwt.JwtUtil;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -53,7 +54,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import static org.summerboot.jexpress.util.FormatterUtil.EMPTY_STR_ARRAY;
 
 /**
  * @author 魏泽北
@@ -165,7 +165,7 @@ public class Utils {
             requestHeader.put(key, "***");
         }
 
-        String[] jsLines = StringUtils.isBlank(jsCode) ? EMPTY_STR_ARRAY : jsCode.split("\\r?\\n");
+        String[] jsLines = StringUtils.isBlank(jsCode) ? FormatterUtil.EMPTY_STR_ARRAY : jsCode.split("\\r?\\n");
         StringBuilder sb = new StringBuilder();
         for (String jsLine : jsLines) {
             if (StringUtils.isBlank(jsLine)) {

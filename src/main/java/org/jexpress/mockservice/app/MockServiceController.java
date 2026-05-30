@@ -30,8 +30,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import org.summerboot.jexpress.annotation.Controller;
-import org.summerboot.jexpress.controller.Err;
-import org.summerboot.jexpress.controller.SessionContext;
+import org.summerboot.jexpress.api.common.Err;
+import org.summerboot.jexpress.api.common.SessionContext;
 import org.summerboot.jexpress.security.SecurityUtil;
 import org.summerboot.jexpress.webserver.domain.ServiceRequest;
 

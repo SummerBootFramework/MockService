@@ -4,7 +4,7 @@ info:
   description: "To change to yours, just add @OpenAPIDefinition.info"
   contact:
     name: summerboot.org
-  version: jExpress 2.6.10
+  version: jExpress 2.6.11
 servers:
 - url: https://localhost:8211
   description: Local Development server
@@ -324,7 +324,7 @@ paths:
       - App Authentication
       summary: WebSocket One Time Ticket Authentication
       description: Requires Bearer auth header
-      operationId: oneTimeTicketAuthenticate
+      operationId: oneTimeTokenAuthenticate
       parameters:
       - name: wsURI
         in: query
@@ -473,13 +473,13 @@ components:
           type: number
         jti:
           type: string
-        uid:
-          type: string
         groups:
           uniqueItems: true
           type: array
           items:
             type: string
+        uid:
+          type: string
     LoginVo:
       required:
       - password
