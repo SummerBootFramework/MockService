@@ -33,11 +33,11 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import org.summerboot.jexpress.annotation.Controller;
-import org.summerboot.jexpress.annotation.rest.Log;
-import org.summerboot.jexpress.api.common.ServiceError;
-import org.summerboot.jexpress.api.common.SessionContext;
-import org.summerboot.jexpress.api.rest.BootController;
+import org.summerboot.jexpress.annotation.Log;
+import org.summerboot.jexpress.core.error.ServiceError;
+import org.summerboot.jexpress.core.session.SessionContext;
 import org.summerboot.jexpress.security.auth.Caller;
+import org.summerboot.jexpress.web.controller.BootController;
 
 /**
  * @author 魏泽北

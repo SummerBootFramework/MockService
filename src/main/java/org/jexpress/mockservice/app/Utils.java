@@ -22,15 +22,15 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import org.apache.commons.lang3.StringUtils;
 import org.graalvm.polyglot.Context;
-import org.summerboot.jexpress.api.common.SessionContext;
-import org.summerboot.jexpress.boot.BootConstant;
-import org.summerboot.jexpress.common.util.FormatterUtil;
-import org.summerboot.jexpress.infra.netty.NioHttpUtil;
-import org.summerboot.jexpress.security.SecurityUtil;
+import org.summerboot.jexpress.boot.BootConstants;
+import org.summerboot.jexpress.core.session.SessionContext;
 import org.summerboot.jexpress.security.auth.AuthConfig;
 import org.summerboot.jexpress.security.auth.Caller;
 import org.summerboot.jexpress.security.auth.RoleMapping;
+import org.summerboot.jexpress.security.crypto.SecurityUtil;
 import org.summerboot.jexpress.security.token.jwt.JwtUtil;
+import org.summerboot.jexpress.util.format.FormatterUtil;
+import org.summerboot.jexpress.web.netty.util.NioHttpUtil;
 
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
@@ -175,13 +175,13 @@ public class Utils {
             if (trimed.startsWith("//") || trimed.startsWith("#")) {
                 continue;
             }
-            sb.append(jsLine).append(BootConstant.BR);
+            sb.append(jsLine).append(BootConstants.BR);
         }
         if (StringUtils.isBlank(sb.toString())) {
             return null;
         }
         String jsFunctionCode = sb.toString();
-        context.memo("jsCode" + BootConstant.BR, jsFunctionCode);
+        context.memo("jsCode" + BootConstants.BR, jsFunctionCode);
 
         String remoteAddress = null;
         String uid = null;

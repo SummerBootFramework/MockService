@@ -1,10 +1,8 @@
 openapi: 3.0.1
 info:
-  title: Default Admin API
-  description: "To change to yours, just add @OpenAPIDefinition.info"
-  contact:
-    name: summerboot.org
-  version: jExpress 2.6.11
+  title: Default API
+  description: Administration and non-functional API for jExpress Boot
+  version: jExpress 2.7.0
 servers:
 - url: https://localhost:8211
   description: Local Development server
@@ -322,7 +320,7 @@ paths:
     get:
       tags:
       - App Authentication
-      summary: WebSocket One Time Ticket Authentication
+      summary: WebSocket One Time Token Authentication
       description: Requires Bearer auth header
       operationId: oneTimeTokenAuthenticate
       parameters:
@@ -464,21 +462,21 @@ components:
           format: int32
         displayName:
           type: string
+        uid:
+          type: string
         tenantName:
           type: string
+        tenantId:
+          type: number
         tokenTtlSec:
           type: integer
           format: int64
-        tenantId:
-          type: number
-        jti:
-          type: string
         groups:
           uniqueItems: true
           type: array
           items:
             type: string
-        uid:
+        jti:
           type: string
     LoginVo:
       required:

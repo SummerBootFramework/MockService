@@ -18,7 +18,7 @@
 package org.jexpress.mockservice.app;
 
 import io.netty.handler.codec.http.HttpResponseStatus;
-import org.summerboot.jexpress.api.common.SessionContext;
+import org.summerboot.jexpress.core.session.SessionContext;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;

@@ -21,7 +21,7 @@
         <maven-surefire.version>3.5.5</maven-surefire.version>
         <maven-failsafe.version>3.5.5</maven-failsafe.version>
         <swagger-maven.version>2.2.48</swagger-maven.version>
-        <jexpress.version>2.6.11-SNAPSHOT</jexpress.version>
+        <jexpress.version>2.7.0-SNAPSHOT</jexpress.version>
         <testng.version>7.12.0</testng.version>
 
         <!-- application properties and dependencies-->
