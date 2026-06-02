@@ -623,14 +623,11 @@
           "displayName" : {
             "type" : "string"
           },
-          "uid" : {
-            "type" : "string"
+          "tenantId" : {
+            "type" : "number"
           },
           "tenantName" : {
             "type" : "string"
-          },
-          "tenantId" : {
-            "type" : "number"
           },
           "tokenTtlSec" : {
             "type" : "integer",
@@ -644,6 +641,9 @@
             }
           },
           "jti" : {
+            "type" : "string"
+          },
+          "uid" : {
             "type" : "string"
           }
         }

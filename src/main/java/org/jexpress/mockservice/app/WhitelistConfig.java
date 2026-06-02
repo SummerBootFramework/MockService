@@ -27,6 +27,9 @@ import java.io.File;
 import java.util.Properties;
 import java.util.Set;
 
+/**
+ * @author Changski Tie Zheng Zhang 张铁铮, 魏泽北, 杜旺财, 杜富贵
+ */
 @ConfigFilename("cfg_whitelist.properties")
 public class WhitelistConfig extends BootConfig {
 

@@ -18,12 +18,14 @@
 package org.jexpress.mockservice.app;
 
 import io.netty.handler.codec.http.HttpResponseStatus;
-import org.summerboot.jexpress.core.session.SessionContext;
+import org.summerboot.jexpress.api.common.SessionContext;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * @author Changski Tie Zheng Zhang 张铁铮, 魏泽北, 杜旺财, 杜富贵
+ */
 public class ResponseSettings {
     public static final String KEY_RESPONSE_STATUS_CODE = "Response_Status_Code";
     public static final String KEY_RESPONSE_DELAY_SECOND = "Response_Delay_Second";

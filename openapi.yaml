@@ -462,12 +462,10 @@ components:
           format: int32
         displayName:
           type: string
-        uid:
-          type: string
-        tenantName:
-          type: string
         tenantId:
           type: number
+        tenantName:
+          type: string
         tokenTtlSec:
           type: integer
           format: int64
@@ -477,6 +475,8 @@ components:
           items:
             type: string
         jti:
+          type: string
+        uid:
           type: string
     LoginVo:
       required:

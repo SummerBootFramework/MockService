@@ -30,10 +30,10 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import org.summerboot.jexpress.annotation.Controller;
-import org.summerboot.jexpress.core.error.Err;
-import org.summerboot.jexpress.core.session.SessionContext;
-import org.summerboot.jexpress.security.crypto.SecurityUtil;
-import org.summerboot.jexpress.web.jaxrs.ServiceRequest;
+import org.summerboot.jexpress.api.common.Err;
+import org.summerboot.jexpress.api.common.ServiceRequest;
+import org.summerboot.jexpress.api.common.SessionContext;
+import org.summerboot.jexpress.security.SecurityUtil;
 
 import javax.script.ScriptException;
 import java.io.IOException;
@@ -43,7 +43,7 @@ import java.util.Properties;
 import java.util.Set;
 
 /**
- * @author 魏泽北
+ * @author Changski Tie Zheng Zhang 张铁铮, 魏泽北, 杜旺财, 杜富贵
  */
 @Singleton
 @Controller
