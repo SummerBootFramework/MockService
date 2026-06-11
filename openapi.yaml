@@ -462,22 +462,22 @@ components:
           format: int32
         displayName:
           type: string
-        tenantId:
-          type: number
-        tenantName:
+        jti:
           type: string
-        tokenTtlSec:
-          type: integer
-          format: int64
         groups:
           uniqueItems: true
           type: array
           items:
             type: string
-        jti:
-          type: string
         uid:
           type: string
+        tenantName:
+          type: string
+        tenantId:
+          type: number
+        tokenTtlSec:
+          type: integer
+          format: int64
     LoginVo:
       required:
       - password
