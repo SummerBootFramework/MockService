@@ -20,14 +20,14 @@
         <maven-resources.version>3.5.0</maven-resources.version>
         <maven-surefire.version>3.5.5</maven-surefire.version>
         <maven-failsafe.version>3.5.5</maven-failsafe.version>
-        <swagger-maven.version>2.2.48</swagger-maven.version>
-        <jexpress.version>2.7.2</jexpress.version>
+        <swagger-maven.version>2.2.54</swagger-maven.version>
+        <jexpress.version>2.7.3</jexpress.version>
         <testng.version>7.12.0</testng.version>
 
         <!-- application properties and dependencies-->
         <main.class>${api.package}.app.Main</main.class>
         <api.package>${groupId}</api.package>
-        <graalvm.version>25.0.3</graalvm.version>
+        <graalvm.version>25.3.4.1</graalvm.version>
     </properties>
 
     <dependencies>
