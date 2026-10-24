@@ -2,7 +2,7 @@ openapi: 3.0.1
 info:
   title: Default API
   description: Administration and non-functional API for jExpress Boot
-  version: jExpress 2.7.3
+  version: jExpress 2.7.4
 servers:
 - url: https://localhost:8211
   description: Local Development server
@@ -22,7 +22,10 @@ paths:
             the error seems to have been caused by the client. Client normally should
             not retransmit the same request again.
           content:
-            text/html:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
               schema:
                 $ref: "#/components/schemas/ServiceError"
         "5xx":
@@ -31,7 +34,10 @@ paths:
             of performing the request. The client can continue and try again with
             the request without modification.
           content:
-            text/html:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceError"
+            application/xml:
               schema:
                 $ref: "#/components/schemas/ServiceError"
       security:
@@ -342,10 +348,7 @@ paths:
               schema:
                 type: string
           content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Caller"
-            application/xml:
+            text/plain:
               schema:
                 $ref: "#/components/schemas/Caller"
         "4xx":
@@ -353,10 +356,7 @@ paths:
             the error seems to have been caused by the client. Client normally should
             not retransmit the same request again.
           content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ServiceError"
-            application/xml:
+            text/plain:
               schema:
                 $ref: "#/components/schemas/ServiceError"
         "5xx":
@@ -365,10 +365,7 @@ paths:
             of performing the request. The client can continue and try again with
             the request without modification.
           content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ServiceError"
-            application/xml:
+            text/plain:
               schema:
                 $ref: "#/components/schemas/ServiceError"
   /mockservice/ping:
@@ -411,7 +408,7 @@ paths:
             the error seems to have been caused by the client. Client normally should
             not retransmit the same request again.
           content:
-            text/html:
+            text/plain:
               schema:
                 $ref: "#/components/schemas/ServiceError"
         "5xx":
@@ -420,7 +417,7 @@ paths:
             of performing the request. The client can continue and try again with
             the request without modification.
           content:
-            text/html:
+            text/plain:
               schema:
                 $ref: "#/components/schemas/ServiceError"
       security:
