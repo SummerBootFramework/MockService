@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <packaging>jar</packaging>
     <groupId>org.jexpress.mockservice</groupId>
     <artifactId>MockService</artifactId>
@@ -10,18 +12,20 @@
     <url>https://github.com/SummerBootFramework/jExpressDemo-HelloSummer</url>
 
     <properties>
-        <!-- common properties and dependencies -->
+        <!-- common properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
+
+        <!-- common dependencies -->
         <maven-clean.version>3.5.0</maven-clean.version>
-        <maven-compiler.version>3.15.0</maven-compiler.version>
-        <maven-dependency.version>3.10.0</maven-dependency.version>
-        <maven-jar.version>3.5.0</maven-jar.version>
+        <maven-compiler.version>3.16.0</maven-compiler.version>
+        <maven-dependency.version>3.11.0</maven-dependency.version>
+        <maven-jar.version>3.5.1</maven-jar.version>
         <maven-resources.version>3.5.0</maven-resources.version>
-        <maven-surefire.version>3.5.5</maven-surefire.version>
-        <maven-failsafe.version>3.5.5</maven-failsafe.version>
+        <maven-surefire.version>3.6.1</maven-surefire.version>
+        <maven-failsafe.version>3.6.1</maven-failsafe.version>
         <swagger-maven.version>2.2.55</swagger-maven.version>
-        <jexpress.version>2.7.4</jexpress.version>
+        <jexpress.version>2.7.5</jexpress.version>
         <testng.version>7.12.0</testng.version>
 
         <!-- application properties and dependencies-->
@@ -131,8 +135,19 @@
                 <configuration>
                     <filesets>
                         <fileset>
+                            <directory>.</directory>
+                            <includes>
+                                <include>gc.*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>plugin/*.jar</exclude>
+                            </excludes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
                             <directory>run</directory>
                             <includes>
+                                <include>gc.*</include>
                                 <include>*.jar</include>
                                 <include>lib/**</include>
                                 <include>lib</include>
@@ -140,7 +155,6 @@
                                 <include>**/log</include>
                                 <include>**/temp/**</include>
                                 <include>**/temp</include>
-                                <include>gc.log*</include>
                             </includes>
                             <excludes>
                                 <exclude>plugin/*.jar</exclude>
@@ -210,6 +224,10 @@
                         <manifestEntries>
                             <Class-Path>lib/lib1-1.0.jar lib/lib2-1.0.jar</Class-Path>
                         </manifestEntries> -->
+                        <manifestEntries>
+                            <!-- Resolves your native access warning -->
+                            <Enable-Native-Access>ALL-UNNAMED</Enable-Native-Access>
+                        </manifestEntries>
                     </archive>
                 </configuration>
             </plugin>
@@ -271,5 +289,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
