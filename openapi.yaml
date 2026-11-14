@@ -461,13 +461,13 @@ components:
           type: string
         jti:
           type: string
-        uid:
-          type: string
         groups:
           uniqueItems: true
           type: array
           items:
             type: string
+        uid:
+          type: string
         tenantId:
           type: number
         tokenTtlSec:
