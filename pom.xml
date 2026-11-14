@@ -12,6 +12,10 @@
     <url>https://github.com/SummerBootFramework/jExpressDemo-HelloSummer</url>
 
     <properties>
+        <!-- application properties-->
+        <main.class>${api.package}.app.Main</main.class>
+        <api.package>${groupId}</api.package>
+
         <!-- common properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
@@ -22,15 +26,13 @@
         <maven-dependency.version>3.11.0</maven-dependency.version>
         <maven-jar.version>3.5.1</maven-jar.version>
         <maven-resources.version>3.5.0</maven-resources.version>
+        <swagger-maven.version>2.2.55</swagger-maven.version>
         <maven-surefire.version>3.6.1</maven-surefire.version>
         <maven-failsafe.version>3.6.1</maven-failsafe.version>
-        <swagger-maven.version>2.2.55</swagger-maven.version>
-        <jexpress.version>2.7.5</jexpress.version>
         <testng.version>7.12.0</testng.version>
+        <jexpress.version>2.7.6-SNAPSHOT</jexpress.version>
 
-        <!-- application properties and dependencies-->
-        <main.class>${api.package}.app.Main</main.class>
-        <api.package>${groupId}</api.package>
+        <!-- application dependencies-->
         <graalvm.version>25.4.4.1.1</graalvm.version>
     </properties>
 
@@ -195,9 +197,8 @@
                         </goals>
                         <configuration>
                             <outputDirectory>${project.build.directory}/../run/lib</outputDirectory>
-                            <outputDirectory>run/lib</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
-                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteSnapshots>true</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
                             <!-- To disable for local dependency -->
                             <includeScope>runtime</includeScope>

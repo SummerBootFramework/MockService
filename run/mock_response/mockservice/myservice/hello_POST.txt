@@ -1,0 +1,21 @@
+{
+  "publicInfo": "This is pulic information",
+  "privateInfo": "This is private sensitive information",
+  "secretList": [
+    "secret-token-123",
+    "secret-key-456"
+  ],
+  "emptyList": [],
+  "nullList": null,
+  "dataList": [
+    "item1",
+    "item2",
+    "item3"
+  ],
+  "pdfBase64": "JVBERi0xLjQKJcfsj6IKNSAwIG9iago8PC9MZW5ndGggNiAwIFIvRmlsdGVyIC9GbGF0ZURlY29kZT4+CnN0cmVhbQp4nA==",
+  "pdfCrc": 3847291045,
+  "imageBase64": [
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
+  ]
+}
