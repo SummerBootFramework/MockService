@@ -618,9 +618,6 @@
           "displayName" : {
             "type" : "string"
           },
-          "jti" : {
-            "type" : "string"
-          },
           "groups" : {
             "uniqueItems" : true,
             "type" : "array",
@@ -628,18 +625,21 @@
               "type" : "string"
             }
           },
+          "jti" : {
+            "type" : "string"
+          },
           "uid" : {
             "type" : "string"
           },
-          "tenantId" : {
-            "type" : "number"
+          "tenantName" : {
+            "type" : "string"
           },
           "tokenTtlSec" : {
             "type" : "integer",
             "format" : "int64"
           },
-          "tenantName" : {
-            "type" : "string"
+          "tenantId" : {
+            "type" : "number"
           }
         }
       },
