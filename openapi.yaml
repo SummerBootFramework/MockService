@@ -468,13 +468,13 @@ components:
           type: string
         uid:
           type: string
+        tenantId:
+          type: number
         tenantName:
           type: string
         tokenTtlSec:
           type: integer
           format: int64
-        tenantId:
-          type: number
     LoginVo:
       required:
       - password
