@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Format Config" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.jexpress.mockservice.app.Main" />
+    <module name="MockService" />
+    <option name="PROGRAM_PARAMETERS" value="-format" />
+    <option name="WORKING_DIRECTORY" value="run" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

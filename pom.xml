@@ -30,10 +30,10 @@
         <maven-surefire.version>3.6.1</maven-surefire.version>
         <maven-failsafe.version>3.6.1</maven-failsafe.version>
         <testng.version>7.12.0</testng.version>
-        <jexpress.version>2.7.6</jexpress.version>
+        <jexpress.version>2.8.1</jexpress.version>
 
         <!-- application dependencies-->
-        <graalvm.version>25.4.4.1.1</graalvm.version>
+        <graalvm.version>25.5.5.0.3</graalvm.version>
     </properties>
 
     <dependencies>
